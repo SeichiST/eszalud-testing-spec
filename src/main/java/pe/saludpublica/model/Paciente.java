@@ -17,7 +17,7 @@ public class Paciente {
     }
 
     private String validarObligatorio(String valor, String mensaje) {
-        if (valor == null) {
+        if (valor == null || valor.isBlank()) {
             throw new IllegalArgumentException(mensaje);
         }
         return valor;

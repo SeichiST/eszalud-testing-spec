@@ -21,7 +21,7 @@ public class CitaMedica {
     }
 
     private <T> T validarObligatorio(T valor, String mensaje) {
-        if (valor == null) {
+        if (valor == null || (valor instanceof String s && s.isBlank())) {
             throw new IllegalArgumentException(mensaje);
         }
         return valor;
