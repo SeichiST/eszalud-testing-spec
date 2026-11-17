@@ -51,4 +51,14 @@ class CitaMedicaTest {
         );
     }
 
+    @Test
+    @DisplayName("Rechazar la creación de una cita sin especialidad")
+    void shouldRejectAppointmentWithoutSpecialty() {
+        LocalDateTime fechaHora = LocalDateTime.of(2026, 11, 23, 16, 30);
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new CitaMedica("6af71e0b501cca046a166049", "6af7271e501cca046a16604f", null, fechaHora, "Dolor abdominal", EstadoCita.PROGRAMADA)
+        );
+    }
+
 }
