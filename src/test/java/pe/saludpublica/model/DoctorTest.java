@@ -61,4 +61,14 @@ class DoctorTest {
                 () -> new Doctor("45678912", "Roberto Enrique", "Salazar Mendoza", null, "6af71da3501cca046a166045")
         );
     }
+
+    @Test
+    @DisplayName("Rechazar doctor con documento, nombres, apellidos o colegiatura en blanco")
+    void shouldRejectDoctorWithBlankRequiredFields() {
+        assertThrows(IllegalArgumentException.class, () -> new Doctor("  ", "Roberto Enrique", "Salazar Mendoza", "CMP 085432", "6af71da3501cca046a166045"));
+        assertThrows(IllegalArgumentException.class, () -> new Doctor("45678912", "", "Salazar Mendoza", "CMP 085432", "6af71da3501cca046a166045"));
+        assertThrows(IllegalArgumentException.class, () -> new Doctor("45678912", "Roberto Enrique", "   ", "CMP 085432", "6af71da3501cca046a166045"));
+        assertThrows(IllegalArgumentException.class, () -> new Doctor("45678912", "Roberto Enrique", "Salazar Mendoza", "", "6af71da3501cca046a166045"));
+    }
+
 }

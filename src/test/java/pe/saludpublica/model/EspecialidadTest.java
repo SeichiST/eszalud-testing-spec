@@ -29,5 +29,10 @@ class EspecialidadTest {
         );
     }
 
+    @Test
+    @DisplayName("Rechazar especialidad con nombre vacío o en blanco")
+    void shouldRejectSpecialtyWithBlankName() {
+        assertThrows(IllegalArgumentException.class, () -> new Especialidad("   ", "Atención primaria"));
+    }
 
 }

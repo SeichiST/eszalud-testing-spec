@@ -52,4 +52,12 @@ class PacienteTest {
                 () -> new Paciente("12345678", "Ana", null, "987654321", "ana@mail.com")
         );
     }
+
+    @Test
+    @DisplayName("Rechazar paciente con documento, nombres o apellidos en blanco")
+    void shouldRejectPatientWithBlankRequiredFields() {
+        assertThrows(IllegalArgumentException.class, () -> new Paciente("   ", "Ana", "Pérez", "987654321", "ana@mail.com"));
+        assertThrows(IllegalArgumentException.class, () -> new Paciente("12345678", "", "Pérez", "987654321", "ana@mail.com"));
+        assertThrows(IllegalArgumentException.class, () -> new Paciente("12345678", "Ana", "   ", "987654321", "ana@mail.com"));
+    }
 }
